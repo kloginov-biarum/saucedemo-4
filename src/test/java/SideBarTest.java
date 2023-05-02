@@ -18,7 +18,8 @@ public class SideBarTest extends BaseTest{
         assertTrue(sideBar.aboutIsEnabled());
         assertTrue(sideBar.logoutIsEnabled());
         assertTrue(sideBar.resetAppStateIsEnabled());
-        sleep(3000);
         assertTrue(sideBar.allItemsIsDisplayed());
     }
+
+
 }

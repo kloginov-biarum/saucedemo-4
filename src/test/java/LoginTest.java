@@ -38,6 +38,19 @@ public class LoginTest extends BaseTest{
     }
 
 
+    //logout
+    @Test
+    public void successLogout(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.successLogin(validUser);
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        assertTrue(inventoryPage.inventoryListIsDisplayed());
+        inventoryPage.clickOnBurgerMenuBtn();
+        SideBar sideBar = new SideBar(driver);
+        sideBar.clickOnLogoutButton();
+        assertTrue(loginPage.loginButtonIsDisplayed());
+    }
+
 
 
 }

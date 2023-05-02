@@ -48,4 +48,10 @@ public class LoginPage extends BasePage{
         passwordInputFiled.sendKeys(user.getPassword());
         loginButton.click();
     }
+
+    public boolean loginButtonIsDisplayed(){
+
+        return loginButton.isDisplayed();
+    }
+
 }
