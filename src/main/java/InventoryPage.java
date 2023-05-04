@@ -24,6 +24,18 @@ public class InventoryPage extends BasePage{
     @FindBy(id = "react-burger-menu-btn")
     private WebElement burgerMenuBtn;
 
+    @FindBy(id = "add-to-cart-sauce-labs-backpack")
+    private WebElement backpackAddToCart;
+    @FindBy(id = "add-to-cart-sauce-labs-bike-light")
+    private WebElement bikeLightAddToCart;
+
+    @FindBy(id = "add-to-cart-sauce-labs-bolt-t-shirt")
+    private WebElement tShortAddToCart;
+    @FindBy(className = "shopping_cart_link")
+    private WebElement cartIcon;
+
+
+
     public boolean inventoryListIsDisplayed(){
         return inventoryList.isDisplayed();
     }
@@ -81,5 +93,28 @@ public class InventoryPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(burgerMenuBtn));
         burgerMenuBtn.click();
+    }
+
+    public void clickOnBackpackAddToCart(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(backpackAddToCart));
+        backpackAddToCart.click();
+    }
+    public void clickOnBikeLightAddToCart(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(bikeLightAddToCart));
+        bikeLightAddToCart.click();
+    }
+
+    public void clickOnTshirtAddToCart(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(tShortAddToCart));
+        tShortAddToCart.click();
+    }
+
+    public void clickOnCartItem(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(cartIcon));
+        cartIcon.click();
     }
 }
