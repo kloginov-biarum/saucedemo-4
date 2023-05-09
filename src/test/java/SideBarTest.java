@@ -1,12 +1,12 @@
-import javafx.geometry.Side;
+
 import org.junit.Test;
 
-import static java.lang.Thread.sleep;
+
 import static org.junit.Assert.assertTrue;
 
 public class SideBarTest extends BaseTest{
     @Test
-    public void checkAllLinksAreDisplayed() throws InterruptedException {
+    public void CheckAllLinksAreDisplayedTest() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.successLogin(validUser);
         InventoryPage inventoryPage = new InventoryPage(driver);

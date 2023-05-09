@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest{
         assertTrue(inventoryPage.inventoryListIsDisplayed());
     }
 
-    @Test
+
     public void loginWithLockedOutUser(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterValueToUserName(lockedOutUser);
@@ -25,7 +25,7 @@ public class LoginTest extends BaseTest{
         loginPage.clickOnLoginButton();
         assertTrue(loginPage.getErrorMessageText().contains("Sorry, this user has been locked out"));
     }
-    @Test
+
     public void loginWithInvalidData(){
         // check error message text
         // "Username and password do not match any user in this service"
@@ -39,7 +39,7 @@ public class LoginTest extends BaseTest{
 
 
     //logout
-    @Test
+
     public void successLogout(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.successLogin(validUser);

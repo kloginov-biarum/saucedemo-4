@@ -21,6 +21,9 @@ public class InventoryPage extends BasePage{
     @FindBy(className = "inventory_item_name")
     private List<WebElement> inventoryNames;
 
+    @FindBy(className = "inventory_item_price")
+    private List<WebElement> inventoryPrices;
+
     @FindBy(id = "react-burger-menu-btn")
     private WebElement burgerMenuBtn;
 
@@ -116,5 +119,9 @@ public class InventoryPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(cartIcon));
         cartIcon.click();
+    }
+
+    public String getPriceOfFirstItem(){
+        return inventoryPrices.get(0).getText();
     }
 }

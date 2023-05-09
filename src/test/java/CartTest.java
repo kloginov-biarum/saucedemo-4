@@ -1,7 +1,6 @@
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class CartTest extends BaseTest{
 
@@ -11,10 +10,13 @@ public class CartTest extends BaseTest{
         loginPage.successLogin(validUser);
         InventoryPage inventoryPage = new InventoryPage(driver);
         assertTrue(inventoryPage.inventoryListIsDisplayed());
+        String backPackPriceFromInventory = inventoryPage.getPriceOfFirstItem();
         inventoryPage.clickOnBackpackAddToCart();
         inventoryPage.clickOnCartItem();
         CartPage cartPage = new CartPage(driver);
         assertEquals(1, cartPage.getItemsQuantity());
+        //assert price from inventory == price from cart page
+        assertEquals(backPackPriceFromInventory, cartPage.getPriceOfFirstAddedItem());
     }
 
     @Test
@@ -33,4 +35,16 @@ public class CartTest extends BaseTest{
         assertEquals(3, cartPage.getItemsQuantity());
     }
 
+    //check cart is empty
+
+    @Test
+    public void emptyCart(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.successLogin(validUser);
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        assertTrue(inventoryPage.inventoryListIsDisplayed());
+        inventoryPage.clickOnCartItem();
+        CartPage cartPage = new CartPage(driver);
+        assertTrue(cartPage.cartIsEmpty());
+    }
 }
