@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,7 +39,7 @@ public class InventoryPage extends BasePage{
     private WebElement cartIcon;
 
 
-
+    @Step("Inventory page is open")
     public boolean inventoryListIsDisplayed(){
         return inventoryList.isDisplayed();
     }

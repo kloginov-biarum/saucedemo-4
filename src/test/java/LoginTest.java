@@ -1,12 +1,16 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LoginTest extends BaseTest{
 
-    @Test
+    @Test @DisplayName("Success Login")
+    @Description("Login with valid data")
     public void loginWithValidDataPO(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterValueToUserName(validUser);
@@ -14,7 +18,7 @@ public class LoginTest extends BaseTest{
         loginPage.clickOnLoginButton();
         // проверка успешной авторизации
         InventoryPage inventoryPage = new InventoryPage(driver);
-        assertTrue(inventoryPage.inventoryListIsDisplayed());
+        assertFalse("Inventory page is NOT open",inventoryPage.inventoryListIsDisplayed());
     }
 
 
