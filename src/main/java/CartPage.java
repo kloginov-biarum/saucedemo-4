@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+import static java.lang.Double.parseDouble;
+
 public class CartPage extends BasePage{
 
     public CartPage(WebDriver driver) {
@@ -49,4 +51,13 @@ public class CartPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(checkoutButton));
         checkoutButton.click();
     }
+
+    public double getTotalPriceOfItems(){
+        double total = 0;
+        for (WebElement price:itemPrices) {
+            total+=parseDouble(price.getText().substring(1));
+        }
+        return total;
+    }
+
 }

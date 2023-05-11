@@ -30,4 +30,27 @@ public class CheckoutTest extends BaseTest{
         assertEquals("Thank you for your order!",
                 checkoutCompletePage.getSuccessMessageText());
     }
+
+
+    @Test
+    public void checkFinalCost(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.successLogin(validUser);
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        assertTrue(inventoryPage.inventoryListIsDisplayed());
+        inventoryPage.clickOnBackpackAddToCart();
+        inventoryPage.clickOnBikeLightAddToCart();
+        inventoryPage.clickOnTshirtAddToCart();
+        inventoryPage.clickOnCartItem();
+        CartPage cartPage = new CartPage(driver);
+        double totalFromCart = cartPage.getTotalPriceOfItems();
+        cartPage.clickOnCheckoutButton();
+        CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage(driver);
+        checkoutStepOnePage.enterValueToFirstName("John");
+        checkoutStepOnePage.enterValueToLastName("Black");
+        checkoutStepOnePage.enterValueToZip("12345");
+        checkoutStepOnePage.clickOnContinueButton();
+        CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
+        assertEquals("",totalFromCart,checkoutStepTwoPage.getItemTotal(),0);
+    }
 }
